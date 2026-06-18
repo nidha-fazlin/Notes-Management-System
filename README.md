@@ -45,3 +45,4 @@ The Vite dev server runs on `http://localhost:5173` and proxies `/api` requests 
 cd frontend
 npm run build
 ```
+"# Notes-Management-System" 
