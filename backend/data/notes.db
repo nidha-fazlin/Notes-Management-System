@@ -1,0 +1,3 @@
+{"id":"1781802460974-1066c86e","title":"Test note","content":"This is a smoke test note.","category":"Testing","tags":["smoke","api"],"createdAt":"2026-06-18T17:07:40.972Z","updatedAt":"2026-06-18T17:07:40.972Z","_id":"EMuV74Icig1nwYqB"}
+{"id":"1781802460974-1066c86e","title":"Updated test note","content":"Updated content","category":"Testing","tags":["updated"],"createdAt":"2026-06-18T17:07:40.972Z","updatedAt":"2026-06-18T17:07:40.995Z","_id":"EMuV74Icig1nwYqB"}
+{"$$deleted":true,"_id":"EMuV74Icig1nwYqB"}
