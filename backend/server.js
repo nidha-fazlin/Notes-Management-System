@@ -2,22 +2,32 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const Datastore = require('nedb-promises');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const dataDirectory = path.join(__dirname, 'data');
+const isVercel = Boolean(process.env.VERCEL);
+const dataDirectory = isVercel
+  ? path.join(os.tmpdir(), 'notes-management-system-data')
+  : path.join(__dirname, 'data');
 const databasePath = path.join(dataDirectory, 'notes.db');
 
 if (!fs.existsSync(dataDirectory)) {
   fs.mkdirSync(dataDirectory, { recursive: true });
 }
 
-const db = Datastore.create({
-  filename: databasePath,
-  autoload: true,
-  timestampData: false,
-});
+let db;
+try {
+  db = Datastore.create({
+    filename: databasePath,
+    autoload: true,
+    timestampData: false,
+  });
+} catch (error) {
+  console.error('Failed to initialize notes database:', error);
+  process.exit(1);
+}
 
 const generateId = () => `${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
 
