@@ -45,7 +45,7 @@ function App() {
         params.set('category', activeCategory)
       }
 
-      const response = await fetch(`/api/notes?${params.toString()}`)
+      const response = await fetch(`/_/backend/api/notes?${params.toString()}`)
       if (!response.ok) {
         throw new Error('Unable to load notes.')
       }
@@ -126,7 +126,7 @@ function App() {
           .filter(Boolean),
       }
 
-      const endpoint = mode === 'edit' && selectedNote ? `/api/notes/${selectedNote.id}` : '/api/notes'
+      const endpoint = mode === 'edit' && selectedNote ? `/_/backend/api/notes/${selectedNote.id}` : '/_/backend/api/notes'
       const method = mode === 'edit' && selectedNote ? 'PUT' : 'POST'
 
       const response = await fetch(endpoint, {
@@ -163,7 +163,7 @@ function App() {
       setError('')
       setMessage('')
 
-      const response = await fetch(`/api/notes/${noteId}`, {
+      const response = await fetch(`/_/backend/api/notes/${noteId}`, {
         method: 'DELETE',
       })
 
